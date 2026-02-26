@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { X } from "lucide-react";
+
 import styled from "styled-components";
+import Game from "./components/Game";
+import { InputText } from "./components/InputText";
 
 const Container = styled.div`
   min-height: 100vh;
@@ -204,34 +206,33 @@ export default function App() {
       <h1>Games Library</h1>
       <form onSubmit={handleSubmit}>
         <div className="game-insert">
-          <label htmlFor="gameTitle">Title:</label>
-          <input
-            type="text"
-            id="gameTitle"
-            value={gameTitle}
-            onChange={(ev) => setGameTitle(ev.target.value)}
+          <InputText
+            label="gameTitle"
+            title="Title:"
+            text={gameTitle}
+            onChange={(ev: React.ChangeEvent<HTMLInputElement>) =>
+              setGameTitle(ev.target.value)
+            }
           />
-          <label htmlFor="gameCover">Cover:</label>
-          <input
-            type="text"
-            id="gameCover"
-            value={gameCover}
-            onChange={(ev) => setGameCover(ev.target.value)}
+          <InputText
+            label="gameCover"
+            title="Cover:"
+            text={gameCover}
+            onChange={(ev: React.ChangeEvent<HTMLInputElement>) =>
+              setGameCover(ev.target.value)
+            }
           />
           <button type="submit">Add Game</button>
         </div>
       </form>
       <div className="games-list">
         {games.map((game) => (
-          <div key={game.id} className="game-item">
-            {game.cover && <img src={game.cover} alt={`${game.title} cover`} />}
-
-            <button className="delete-btn" onClick={() => removeGame(game.id)}>
-              <X size={18} strokeWidth={2.5} />
-            </button>
-
-            <h2>{game.title}</h2>
-          </div>
+          <Game
+            key={game.id}
+            title={game.title}
+            cover={game.cover}
+            onRemove={() => removeGame(game.id)}
+          />
         ))}
       </div>
     </Container>
