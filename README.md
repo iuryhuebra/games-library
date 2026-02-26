@@ -1,73 +1,75 @@
-# React + TypeScript + Vite
+# Games Library
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto de estudo em React e TypeScript para praticar conceitos fundamentais de desenvolvimento frontend.
 
-Currently, two official plugins are available:
+## 📝 Descrição
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Aplicação simples de gerenciamento de jogos onde é possível adicionar e remover títulos com capa. Desenvolvida com foco em entender os pilares do React moderno aliando TypeScript e estilização com styled-components. Os dados são mantidos em `localStorage` para persistência entre sessões.
 
-## React Compiler
+## 🔍 Preview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Tela principal exibindo uma lista de jogos com capa e título.
+- Formulário para inserir um novo jogo, indicando título e URL da imagem da capa.
+- Botão para remover cada jogo cadastrado.
 
-## Expanding the ESLint configuration
+> O objetivo não é entregar uma solução completa, mas demonstrar o fluxo de estados e componentes.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Tecnologias utilizadas
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **React** (17/18) com hooks (`useState`)
+- **TypeScript** para tipagem estática
+- **styled-components** para estilização de componentes
+- **Vite** como bundler / dev server
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🧠 Conceitos praticados
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Componentização e composição de UI
+- Gerenciamento de estado com `useState`
+- Tipagem de props e estados em TypeScript
+- Persistência simples com `localStorage`
+- Criação de componentes estilizados usando `styled-components`
+
+## 🛠️ Como rodar o projeto localmente
+
+```bash
+# clonar o repositório
+git clone <URL-DO-REPO>
+cd games-library
+
+# instalar dependências (usa pnpm)
+pnpm install
+
+# iniciar servidor de desenvolvimento
+pnpm dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+A aplicação estará disponível em `http://localhost:5173` (ou porta exibida pelo terminal).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📁 Estrutura do projeto
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+src/
+├─ assets/          # imagens ou arquivos estáticos usados
+├─ components/      # componentes React reutilizáveis
+│  ├─ Game.tsx      # cartão de jogo
+│  └─ InputText.tsx # campo de texto estilizado
+├─ App.tsx          # componente raiz
+└─ main.tsx         # ponto de entrada do React
+
+public/             # arquivos estáticos servidos
+
+package.json
+vite.config.ts
+```
+
+## 🔮 Possíveis melhorias futuras
+
+- Adicionar validação de formulário e feedback para entradas inválidas.
+- Implementar edição de jogos já cadastrados.
+- Utilizar contexto ou `useReducer` para gerenciar estado mais complexo.
+- Migrar para uma API externa para persistência real.
+- Incluir testes unitários com Jest/React Testing Library.
+
+## 🧑‍💻 Autor
+
+Iury H. — desenvolvedor estudando React e TypeScript.
